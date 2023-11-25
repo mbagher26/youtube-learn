@@ -1,7 +1,4 @@
-interface IInput {
-    children? : any;
-    title? : string; 
-    onClick : () => void;
-    isLoding? : boolean;
+interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>  {
+    
 }
-export default IInput
+export default IInputProps
