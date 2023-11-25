@@ -3,13 +3,14 @@ import IInputProps from "./input.types";
 import styles from './input.module.scss'
 
 
-const Input = (props: IInputProps) =>{
-    return(
+const Input = (props: IInputProps) => {
+    return (
         <div className={styles.input}>
-            {props.icon && props.icon}
-            <input {...props} />
+            <div className={styles.input_container}>
+                {props.icon && props.icon}
+                <input {...props} />
+            </div>
         </div>
-        
     )
 }
 
