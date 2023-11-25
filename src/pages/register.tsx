@@ -1,3 +1,6 @@
+import Button from "../components/button/button"
+import Input from "../components/input/input"
+
 const Register = () =>{
     return (
         <div style={{
@@ -7,11 +10,16 @@ const Register = () =>{
             justifyContent : "center",
             alignItems : "center"
         }}>
-            <form>
-                <input type="text" placeholder="username"/>
-                <input type="text" placeholder="password"/>
-            </form>
+            <form className="form">
+                <span>Welcome Back</span>
+                <span>Enter your credentials to access your account</span>
+                <Input></Input>
+                <Input></Input>
 
+                <Button >
+                    <span>Sginin</span>
+                </Button>
+            </form>
         </div>
     )
 }
