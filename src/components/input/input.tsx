@@ -6,6 +6,7 @@ import styles from './input.module.scss'
 const Input = (props: IInputProps) =>{
     return(
         <div className={styles.input}>
+            {props.icon && props.icon}
             <input {...props} />
         </div>
         
