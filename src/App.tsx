@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Products from './pages/Products'
 import ProductItem from './pages/ProductItem'
 import Home from './pages/Home'
-import {Header} from './components/header'
+import { Header } from './components'
 
 function App() {
   return (
