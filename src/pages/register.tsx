@@ -1,6 +1,7 @@
 import Button from "../components/button/button"
 import Input from "../components/input/input"
 
+
 const Register = () => {
     return (
         <div style={{
@@ -22,6 +23,7 @@ const Register = () => {
                  } 
                 />
                 <Input
+                        type="password"
                         placeholder="Enter your Password"
                         label="Password"
                         icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" >
