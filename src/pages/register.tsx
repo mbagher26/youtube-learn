@@ -16,7 +16,7 @@ const Register = () =>{
                 <Input></Input>
                 <Input></Input>
 
-                <Button >
+                <Button onClick={() => {}}>
                     <span>Sginin</span>
                 </Button>
             </form>
