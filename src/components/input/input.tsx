@@ -5,8 +5,9 @@ import styles from './input.module.scss'
 
 const Input = (props: IInputProps) =>{
     return(
-        
-            <input {...props} className={styles.input}/>
+        <div className={styles.input}>
+            <input {...props} />
+        </div>
         
     )
 }
