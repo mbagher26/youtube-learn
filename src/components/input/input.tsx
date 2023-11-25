@@ -5,9 +5,9 @@ import styles from './input.module.scss'
 
 const Input = ({children, title, onClick, isLoding }:IInput) =>{
     return(
-        <div>
+        
             <input className={styles.input}/>
-        </div>
+        
     )
 }
 
