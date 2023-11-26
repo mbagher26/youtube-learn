@@ -1,10 +1,10 @@
-import { FormEvent, useRef } from "react"
+import { FormEvent, useRef, useState } from "react"
 import Button from "../components/button/button"
 import Input from "../components/input/input"
 
 
 const Register = () => {
-    
+    const [errors, setErrores] = useState<{[key:string]: string}>({})
     const lastnameRef = useRef<HTMLInputElement>(null)
     const firstnameRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
@@ -13,11 +13,24 @@ const Register = () => {
     const handelSubmitForm = (e:FormEvent) =>{
         e.preventDefault()
         const Data = {
-            "lastnameRef": lastnameRef.current?.value,
-            "firstnameRef": firstnameRef.current?.value,
-            "emailRef": emailRef.current?.value,
-            "passwordRef": passwordRef.current?.value
+            "lastname": lastnameRef.current?.value,
+            "firstname": firstnameRef.current?.value,
+            "email": emailRef.current?.value,
+            "password": passwordRef.current?.value
         }
+        const errors:{[key:string]: string} ={}
+        for(let [key, value] of Object.entries(Data)) {
+            if(!value){
+                errors [key] = `${key} is reguired`
+            }
+        }
+        if(Object.keys(errors).length > 0){
+            setErrores(errors)
+            return
+        }else{
+            setErrores({})
+        }
+        
         console.log(Data);
     }
     return (
@@ -39,7 +52,10 @@ const Register = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
                     }
+                    error={errors["email"]}
                 />
+                
+                
                 <Input
                     ref={firstnameRef}
                     placeholder="Enter your first name"
@@ -49,6 +65,7 @@ const Register = () => {
                     </svg>
 
                     }
+                    error={errors["firstname"]}
                 />
                 <Input
                     ref={lastnameRef}
@@ -59,6 +76,7 @@ const Register = () => {
                     </svg>
 
                     }
+                    error={errors["lastname"]}
                 />
                 <Input
                     
@@ -70,6 +88,7 @@ const Register = () => {
                         <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd" />
                     </svg>
                     }
+                    error={errors["password"]}
                 />
                 <Button onClick={() => { }}>
                     <span>Register</span>
