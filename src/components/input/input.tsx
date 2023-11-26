@@ -1,9 +1,9 @@
-import { memo, useState } from "react";
+import { memo, useState, forwardRef } from "react";
 import IInputProps from "./input.types";
 import styles from './input.module.scss'
 
 
-const Input = (props: IInputProps) => {
+const Input = forwardRef<HTMLInputElement, IInputProps>((props: IInputProps, ref) => {
     const [secure, setSecure] = useState<boolean>(props.type === "password" ? true : false)
     const handelButton = () => {
         setSecure(!secure)
@@ -13,7 +13,7 @@ const Input = (props: IInputProps) => {
             {props.label && <span className={styles.label}>{props.label}</span>}
             <div className={styles.input_container}>
                 {props.icon && props.icon}
-                <input {...props} type={secure ? "password" : "text"} />
+                <input ref={ref} {...props} type={secure ? "password" : "text"} />
                 {props.type === "password" &&
                     <button className={styles.eyebtn} type="button" onClick={handelButton}>
                         {
@@ -34,6 +34,6 @@ const Input = (props: IInputProps) => {
             {props.error && <span className={styles.error}>{props.error}</span>}
         </div>
     )
-}
+})
 
 export default memo(Input)
