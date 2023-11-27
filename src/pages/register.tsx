@@ -24,6 +24,9 @@ const Register = () => {
                 errors [key] = `${key} is reguired`
             }
         }
+        if(Data.password && Data.password.length < 8){
+            errors["password"] = "Password is week"
+        }
         if(Object.keys(errors).length > 0){
             setErrores(errors)
             return
