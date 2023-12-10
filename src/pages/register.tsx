@@ -1,9 +1,12 @@
 import { FormEvent, useRef, useState } from "react"
 import Button from "../components/button/button"
 import Input from "../components/input/input"
-
+import {register} from '../../service/auth'
+import { Link, useNavigate } from "react-router-dom"
 
 const Register = () => {
+
+    const navigate = useNavigate();
     const [errors, setErrores] = useState<{[key:string]: string}>({})
     const lastnameRef = useRef<HTMLInputElement>(null)
     const firstnameRef = useRef<HTMLInputElement>(null)
@@ -34,7 +37,14 @@ const Register = () => {
             setErrores({})
         }
         
-        console.log(Data);
+        register(Data).then((res) =>{
+            console.log(res);
+            if(res.status === 200){
+                console.log("success")
+                navigate("/login");
+            }
+        })
+        
     }
     return (
         <div style={{
@@ -57,8 +67,6 @@ const Register = () => {
                     }
                     error={errors["email"]}
                 />
-                
-                
                 <Input
                     ref={firstnameRef}
                     placeholder="Enter your first name"
@@ -93,6 +101,7 @@ const Register = () => {
                     }
                     error={errors["password"]}
                 />
+                <Link to="/login">Already user? go to  login</Link>
                 <Button onClick={() => { }}>
                     <span>Register</span>
                 </Button>
